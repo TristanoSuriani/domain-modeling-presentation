@@ -1,6 +1,5 @@
-# CSV Parser TDD Kata
+# Domain modelling presentation - a little live coding
 
-Domain modelling presentation - examples
 <hr>
 
 # From anemic to rich
