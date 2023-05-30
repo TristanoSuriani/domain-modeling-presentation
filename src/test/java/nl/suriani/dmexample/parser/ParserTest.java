@@ -1,8 +1,8 @@
-package nl.suriani.csvtdd.parser;
+package nl.suriani.dmexample.parser;
 
-import nl.suriani.csvtdd.model.CSV;
-import nl.suriani.csvtdd.model.MissingHeaderException;
-import nl.suriani.csvtdd.model.ParseException;
+import nl.suriani.dmexample.model.CSV;
+import nl.suriani.dmexample.model.MissingHeaderException;
+import nl.suriani.dmexample.model.ParseException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

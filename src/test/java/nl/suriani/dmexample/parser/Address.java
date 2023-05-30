@@ -1,6 +1,6 @@
-package nl.suriani.csvtdd.parser;
+package nl.suriani.dmexample.parser;
 
-import nl.suriani.csvtdd.model.*;
+import nl.suriani.dmexample.model.*;
 
 import java.util.List;
 

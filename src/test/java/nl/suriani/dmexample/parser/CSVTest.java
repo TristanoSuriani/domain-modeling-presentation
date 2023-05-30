@@ -1,6 +1,6 @@
-package nl.suriani.csvtdd.parser;
+package nl.suriani.dmexample.parser;
 
-import nl.suriani.csvtdd.model.Row;
+import nl.suriani.dmexample.model.Row;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
