@@ -1,6 +1,6 @@
-package nl.suriani.dmexample.domain;
+package nl.suriani.dmexample.domain.agreement;
 
-import java.time.LocalDate;
+import nl.suriani.dmexample.domain.shared.Guards;
 
 public record Annotation(String value) {
     public Annotation {

@@ -1,4 +1,6 @@
-package nl.suriani.dmexample.domain;
+package nl.suriani.dmexample.domain.shared;
+
+import nl.suriani.dmexample.domain.shared.Guards;
 
 import java.time.LocalDate;
 

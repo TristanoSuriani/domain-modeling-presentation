@@ -1,4 +1,4 @@
-package nl.suriani.dmexample.domain;
+package nl.suriani.dmexample.domain.agreement;
 
 import java.time.LocalDate;
 import java.util.List;

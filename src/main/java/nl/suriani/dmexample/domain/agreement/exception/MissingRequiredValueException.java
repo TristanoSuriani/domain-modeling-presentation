@@ -1,4 +1,4 @@
-package nl.suriani.dmexample.domain.exception;
+package nl.suriani.dmexample.domain.agreement.exception;
 
 public class MissingRequiredValueException extends RuntimeException {
 }

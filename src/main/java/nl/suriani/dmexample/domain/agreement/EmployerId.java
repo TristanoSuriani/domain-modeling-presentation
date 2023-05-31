@@ -1,4 +1,6 @@
-package nl.suriani.dmexample.domain;
+package nl.suriani.dmexample.domain.agreement;
+
+import nl.suriani.dmexample.domain.shared.Guards;
 
 import java.util.UUID;
 

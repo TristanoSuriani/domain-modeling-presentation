@@ -1,33 +1,80 @@
 @startuml
+package agreement {
+    class AdministrationAgreement {
+      - AdministrationAgreementId id (1..1)
+      - EmployerId employerId (1..1)
+      - AdministrationOfficeId administrationOfficeId (1..1)
+      - StartDate startDate (1..1)
+      - EndDate endDate (0..1)
+      - Annotation annotations (0..n)
+    }
 
-class AdministrationAgreement {
-  - AdministrationAgreementId id (1..1)
-  - EmployerId employerId (1..1)
-  - AdministrationOfficeId administrationOfficeId (1..1)
-  - StartDate startDate (1..1)
-  - EndDate endDate (0..1)
-  - Annotation annotations (0..n)
+    class AdministrationAgreementId {
+        -UUID value (1..1)
+    }
+
+    class EmployerId {
+        -UUID value (1..1)
+    }
+
+    class Annotation {
+        -LocalDate value (1..1)
+    }
+
+    class AdministrationAgreementService {
+        -EventPublisher eventPublisher(1..1)
+        --
+        +AdministrationAgreement changeEndDate(\n     AdministrationAgreement administrationAgreement,\n     EndDate endDate)
+    }
 }
 
-class AdministrationAgreementId {
-    -UUID value (1..1)
+package shared {
+    class StartDate {
+        -LocalDate value (1..1)
+    }
+
+    class EndDate {
+        -LocalDate value (1..1)
+    }
+
+    interface EventPublisher {
+        +void publish(DomainEvent domainEvent)
+    }
+
+    abstract class DomainEvent {
+        -LocalDateTime createdAt (1..1)
+    }
 }
 
-class EmployerId {
-    -UUID value (1..1)
+package events {
+
+    class AdministrationAgreementCreated {
+        -LocalDateTime createdAt (1..1)
+        --
+        -AdministrationAgreementId administrationAgreementId (1..1)
+    }
+
+    class AdministrationAgreementEndDateChanged {
+        -LocalDateTime createdAt (1..1)
+        --
+        -AdministrationAgreementId administrationAgreementId (1..1)
+        -EndDate oldEndDate (0..1)
+        -EndDate newEndDate (0..1)
+    }
 }
 
-class StartDate {
-    -LocalDate value (1..1)
-}
+AdministrationAgreement *-right- AdministrationAgreementId
+AdministrationAgreement *-up- EmployerId
+AdministrationAgreement *-down-- StartDate
+AdministrationAgreement *-down- EndDate
+AdministrationAgreement *-up- Annotation
 
-class EndDate {
-    -LocalDate value (1..1)
-}
+AdministrationAgreementService *-left- EventPublisher
+AdministrationAgreementService -right--> AdministrationAgreement
+AdministrationAgreementService -down--> EndDate
+EventPublisher -down-> DomainEvent
 
-class Annotation {
-    -LocalDate value (1..1)
-}
-
+AdministrationAgreementCreated -up--|> DomainEvent
+AdministrationAgreementEndDateChanged -up--|> DomainEvent
 
 @enduml

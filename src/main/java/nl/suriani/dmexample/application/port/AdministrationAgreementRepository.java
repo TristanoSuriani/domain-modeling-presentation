@@ -1,6 +1,6 @@
 package nl.suriani.dmexample.application.port;
 
-import nl.suriani.dmexample.domain.AdministrationAgreement;
+import nl.suriani.dmexample.domain.agreement.AdministrationAgreement;
 
 import java.util.Optional;
 

@@ -1,4 +1,8 @@
-package nl.suriani.dmexample.domain;
+package nl.suriani.dmexample.domain.agreement;
+
+import nl.suriani.dmexample.domain.events.AdministrationAgreementEndDateChanged;
+import nl.suriani.dmexample.domain.shared.EndDate;
+import nl.suriani.dmexample.domain.shared.EventPublisher;
 
 import java.time.LocalDateTime;
 import java.util.Optional;

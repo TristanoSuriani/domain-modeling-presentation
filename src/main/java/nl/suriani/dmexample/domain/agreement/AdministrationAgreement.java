@@ -1,4 +1,9 @@
-package nl.suriani.dmexample.domain;
+package nl.suriani.dmexample.domain.agreement;
+
+import nl.suriani.dmexample.domain.shared.DateGuards;
+import nl.suriani.dmexample.domain.shared.EndDate;
+import nl.suriani.dmexample.domain.shared.Guards;
+import nl.suriani.dmexample.domain.shared.StartDate;
 
 import java.util.List;
 import java.util.Optional;
