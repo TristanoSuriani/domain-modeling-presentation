@@ -1,66 +1,31 @@
 package nl.suriani.dmexample.domain.agreement;
 
-import java.time.LocalDate;
+import nl.suriani.dmexample.domain.shared.DateGuards;
+import nl.suriani.dmexample.domain.shared.EndDate;
+import nl.suriani.dmexample.domain.shared.Guards;
+import nl.suriani.dmexample.domain.shared.StartDate;
+
 import java.util.List;
+import java.util.Optional;
 
-public class AdministrationAgreement {
-    private String uuid;
 
-    private String employerUuid;
+public record AdministrationAgreement(AdministrationAgreementId id,
+                                      EmployerId employerId,
+                                      AdministrationOfficeId administrationOfficeId,
+                                      StartDate startDate,
+                                      Optional<EndDate> endDate,
+                                      List<Annotation> annotations) {
 
-    private String administrationOfficeUuid;
 
-    private LocalDate startDate;
+    public AdministrationAgreement {
+        Guards.isNotNull(id);
+        Guards.isNotNull(employerId);
+        Guards.isNotNull(administrationOfficeId);
+        Guards.isNotNull(startDate);
+        Guards.isNotNull(endDate);
+        Guards.isNotNull(annotations);
+        annotations = List.copyOf(annotations);
 
-    private LocalDate endDate;
-
-    private List<String> annotations;
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    public String getEmployerUuid() {
-        return employerUuid;
-    }
-
-    public void setEmployerUuid(String employerUuid) {
-        this.employerUuid = employerUuid;
-    }
-
-    public String getAdministrationOfficeUuid() {
-        return administrationOfficeUuid;
-    }
-
-    public void setAdministrationOfficeUuid(String administrationOfficeUuid) {
-        this.administrationOfficeUuid = administrationOfficeUuid;
-    }
-
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-    public List<String> getAnnotations() {
-        return annotations;
-    }
-
-    public void setAnnotations(List<String> annotations) {
-        this.annotations = annotations;
+        endDate.ifPresent(date -> DateGuards.isStartDateBeforeOrEqualToEndDate(startDate, date));
     }
 }
