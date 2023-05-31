@@ -1,12 +1,33 @@
 @startuml
 
 class AdministrationAgreement {
-  - String uuid (?..?)
-  - String employerUuid (?..?)
-  - String administrationOfficeUuid (?..?)
-  - LocalDate startDate (?..?)
-  - LocalDate endDate (?..?)
-  - List<String> annotations (?..?)
+  - AdministrationAgreementId id (1..1)
+  - EmployerId employerId (1..1)
+  - AdministrationOfficeId administrationOfficeId (1..1)
+  - StartDate startDate (1..1)
+  - EndDate endDate (0..1)
+  - Annotation annotations (0..n)
 }
+
+class AdministrationAgreementId {
+    -UUID value (1..1)
+}
+
+class EmployerId {
+    -UUID value (1..1)
+}
+
+class StartDate {
+    -LocalDate value (1..1)
+}
+
+class EndDate {
+    -LocalDate value (1..1)
+}
+
+class Annotation {
+    -LocalDate value (1..1)
+}
+
 
 @enduml
