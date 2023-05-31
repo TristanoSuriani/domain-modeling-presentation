@@ -1,40 +1,66 @@
 package nl.suriani.dmexample.domain.agreement;
 
-import nl.suriani.dmexample.domain.shared.DateGuards;
-import nl.suriani.dmexample.domain.shared.EndDate;
-import nl.suriani.dmexample.domain.shared.Guards;
-import nl.suriani.dmexample.domain.shared.StartDate;
-
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
+public class AdministrationAgreement {
+    private String uuid;
 
-public record AdministrationAgreement(AdministrationAgreementId id,
-                                      EmployerId employerId,
-                                      AdministrationOfficeId administrationOfficeId,
-                                      StartDate startDate,
-                                      Optional<EndDate> endDate,
-                                      List<Annotation> annotations) {
+    private String employerUuid;
 
+    private String administrationOfficeUuid;
 
-    public AdministrationAgreement {
-        Guards.isNotNull(id);
-        Guards.isNotNull(employerId);
-        Guards.isNotNull(administrationOfficeId);
-        Guards.isNotNull(startDate);
-        Guards.isNotNull(endDate);
-        Guards.isNotNull(annotations);
-        annotations = List.copyOf(annotations);
+    private LocalDate startDate;
 
-        endDate.ifPresent(date -> DateGuards.isStartDateBeforeOrEqualToEndDate(startDate, date));
+    private LocalDate endDate;
+
+    private List<String> annotations;
+
+    public String getUuid() {
+        return uuid;
     }
 
-    public AdministrationAgreement withEndDate(Optional<EndDate> endDate) {
-        return new AdministrationAgreement(id,
-                employerId,
-                administrationOfficeId,
-                startDate,
-                endDate,
-                annotations);
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public String getEmployerUuid() {
+        return employerUuid;
+    }
+
+    public void setEmployerUuid(String employerUuid) {
+        this.employerUuid = employerUuid;
+    }
+
+    public String getAdministrationOfficeUuid() {
+        return administrationOfficeUuid;
+    }
+
+    public void setAdministrationOfficeUuid(String administrationOfficeUuid) {
+        this.administrationOfficeUuid = administrationOfficeUuid;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public List<String> getAnnotations() {
+        return annotations;
+    }
+
+    public void setAnnotations(List<String> annotations) {
+        this.annotations = annotations;
     }
 }
