@@ -1,12 +1,12 @@
 @startuml
 package agreement {
     class AdministrationAgreement {
-      - AdministrationAgreementId id (1..1)
-      - EmployerId employerId (1..1)
-      - AdministrationOfficeId administrationOfficeId (1..1)
-      - StartDate startDate (1..1)
-      - EndDate endDate (0..1)
-      - Annotation annotations (0..n)
+      -AdministrationAgreementId id (1..1)
+      -EmployerId employerId (1..1)
+      -AdministrationOfficeId administrationOfficeId (1..1)
+      -StartDate startDate (1..1)
+      -EndDate endDate (0..1)
+      -Annotation annotations (0..n)
     }
 
     class AdministrationAgreementId {
